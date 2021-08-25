@@ -1,0 +1,77 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Section One</title>
+
+		<link rel="stylesheet" href="../dist/reset.css">
+		<link rel="stylesheet" href="../dist/reveal.css">
+		<link rel="stylesheet" href="../dist/theme/black.css">
+
+		<!-- Theme used for syntax highlighted code -->
+		<link rel="stylesheet" href="plugin/highlight/monokai.css">
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section data-markdown>
+					# Section One
+					Starting out with C++
+					---
+					## Why C++?
+					* We can easily examine many of the items that make a computer tick. Unlike other high-level languages everything is exposed with C++ and nothing is made easy.
+
+					* You will have to manage your resources properly and thus gain skills you wouldn't with other languages and be a better programmer at the end of it.
+					---
+					![](./assets/tiobe.png)
+
+					C, C++, and C# account for over 25% of the popularity in choice of language.
+					---
+					## Popular C-Like Languages
+						C           1969          D           2001 
+						C++         1979          Go          2007 
+						Objective-C 1986          OpenCL C    2009 
+						Perl        1988          Swift       2014 
+						Java        1991          AWK         1977 
+						PHP         1995          Processing  2001 
+						ECMAscript  1995          Dart        2013 
+						C#          1999          R           1993 
+						Hack        2014
+					---
+					## Where are they used?
+					* Desktop Apps: C#, C++, Python, Java
+					* Mobile Apps: Swift, Java, Kotlin, C#
+					* Web Apps: Javascript, Python, PHP, Ruby
+					---
+					## Why Programmers?
+					* **Computer** - programmable machine designed to follow instructions
+					* **Algorithm** - a precise, step-by-step plan for solving a problem
+					* **Program** - instructions expressed in a programming language in computer memory to make it do something
+					* **Programmer** - person who writes instructions (programs) to make computer perform a task
+					* **Programming Language** - any language designed specifically for use in creating programs
+
+					SO, without programmers, no programs; without programs,  a computer cannot do anything
+					---
+				</section>
+			</div>
+		</div>
+
+		<script src="../dist/reveal.js"></script>
+		<script src="../plugin/notes/notes.js"></script>
+		<script src="../plugin/markdown/markdown.js"></script>
+		<script src="../plugin/highlight/highlight.js"></script>
+		<script>
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/
+			Reveal.initialize({
+				hash: true,
+
+				// Learn about plugins: https://revealjs.com/plugins/
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
+			});
+		</script>
+	</body>
+</html>
