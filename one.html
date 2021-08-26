@@ -18,9 +18,99 @@
 			<div class="slides">
 				<section data-markdown>
 					# Section One
-					Starting out with C++
+					Introduction to Computers and Programming
 					---
-					## Why C++?
+					### Computer Hardware
+					* Central Processing Unit (CPU)
+					* Main Memory (RAM)
+					* Secondary Memory / Storage (HDD)
+					* Input Devices
+					* Output Devices
+					---
+					### Hardware Components
+					![](./assets/hardwarecomponents.png)
+					---
+					### Central Processing Unit (CPU)
+					* Control Unit
+						* Retrieves and decodes program instructions
+						* Coordinates activities of all other parts of computer
+					* Arithmetic & Logic Unit
+						* Hardware optimized for high-speed numeric calculation
+						* Hardware designed for true/false, yes/no decisions
+					---
+					### Main Memory (RAM)
+					* It is *volatile*. Main memory is erased when program terminates or computer is turned off
+					* Also called Random Access Memory (RAM)
+					* Organized as follows:
+						* *bit* - smallest piece of memory. Has values 0 (off, false) or 1 (on, true)
+						* *byte* - 8 consecutive bits. Bytes have addresses.
+					* *Address* – Each *byte* in memory is identified by a unique number known as an *address*.
+					---
+					### Memory Addressing
+					![](./assets/memoryaddressing.png)  
+					In the figure above we can see that the value `149` is stored at address 16 and `72` at address 23.  
+					*Notice that addressing begins at index 0 and that it flows from left to right.*
+					---
+					### Secondary Storage (HDD)
+					* *Non-volatile* - data retained when program is not running or computer is turned off
+					* Comes in a variety of media:
+						* *magnetic* - traditional hard drives that use a moveable mechanical arm to read/write
+						* *solid-state* - data stored in chips, no moving parts, flash drives connected via USB
+						* *optical* - CD-ROM, DVD
+					---
+					### Input Devices
+					* Devices that send information to the computer from outside
+					* Many devices can provide *input*:
+						* Keyboard, mouse, touchscreen, scanner, digital camera, microphone, disk drives, CD drives, etc.
+					---
+					### Output Devices
+					* Devices that can receive information from the computer
+					* Many devices can function as *output*:
+						* Monitor, printers, speakers, disk drives, CD drives, etc.
+					---
+					### Categories of Software
+					* *System software* - programs that manage the computer hardware and the programs that run on them. 
+						* Examples: operating systems, utility programs, software development tools
+					* *Application software* - programs that provide services to the user.
+						* Examples : word processing, games, programs to solve specific problems
+					---
+					### Why Programmers?
+					* **Computer** - programmable machine designed to follow instructions
+					* **Algorithm** - a precise, step-by-step plan for solving a problem
+					* **Program** - instructions expressed in a programming language in computer memory to make it do something
+					---
+					### Why Programmers?
+					* **Programmer** - person who writes instructions (programs) to make computer perform a task
+					* **Programming Language** - any language designed specifically for use in creating programs  
+					&nbsp;  
+					SO, without programmers, no programs; without programs, a computer cannot do anything.
+					---
+					### Algorithm
+					![](./assets/algo-example.png)  
+					*Well-defined steps to solve a problem.*
+					---
+					### Computer Code
+					Computers execute code that is stored in the *computer memory* in a binary form.
+
+						11000111 01000100 00100100 00000100 00011000 10000111 00000100
+					
+					Humans are not skilled at writing or reading a machine language.
+					---
+					### Levels of Language
+					* Low-Level
+						* Machine Language
+							* Pure binary, but usually expressed as hexadecimal
+						* Assembly Language
+							* Corresponds more or less 1:1 with machine language (easy conversion)
+							* More human-readable (for some definition of more)
+					---
+					### Levels of Language
+					* High-Level
+						* C, C++, Python, Java, etc.
+							* Designed to look like a human language
+							* Must be translated to machine language
+					---
+					### Why C++?
 					* We can easily examine many of the items that make a computer tick. Unlike other high-level languages everything is exposed with C++ and nothing is made easy.
 
 					* You will have to manage your resources properly and thus gain skills you wouldn't with other languages and be a better programmer at the end of it.
@@ -29,7 +119,7 @@
 
 					C, C++, and C# account for over 25% of the popularity in choice of language.
 					---
-					## Popular C-Like Languages
+					### Popular C-Like Languages
 						C           1969          D           2001 
 						C++         1979          Go          2007 
 						Objective-C 1986          OpenCL C    2009 
@@ -40,20 +130,142 @@
 						C#          1999          R           1993 
 						Hack        2014
 					---
-					## Where are they used?
+					### Where are they used?
 					* Desktop Apps: C#, C++, Python, Java
 					* Mobile Apps: Swift, Java, Kotlin, C#
 					* Web Apps: Javascript, Python, PHP, Ruby
 					---
-					## Why Programmers?
-					* **Computer** - programmable machine designed to follow instructions
-					* **Algorithm** - a precise, step-by-step plan for solving a problem
-					* **Program** - instructions expressed in a programming language in computer memory to make it do something
-					* **Programmer** - person who writes instructions (programs) to make computer perform a task
-					* **Programming Language** - any language designed specifically for use in creating programs
-
-					SO, without programmers, no programs; without programs,  a computer cannot do anything
+					### Machine Language (Binary)
+						01010101                                                      
+						10001001 11100101                                             
+						10000011 11100100 11110000                                    
+						10000011 11101100 00010000                                    
+						11000111 01000100 00100100 00000100 00011000 10000111 00000100
+						00001000                                                      
+						11000111 00000100 00100100 00100000 10100000 00000100 00001000
+						11101000 11100011 11111110 11111111 11111111                  
+						10111000 00000000 00000000 00000000 00000000                  
+						11001001                                                      
+						11000011
 					---
+					### Machine Language (Hexadecimal)
+						55                              
+						89 e5                  
+						83 e4 f0               
+						83 ec 10               
+						c7 44 24 04 18 87 04 08
+						c7 04 24 20 a0 04 08   
+						e8 e3 fe ff ff         
+						b8 00 00 00 00         
+						c9                     
+						c3
+					---
+					### Assembly Language (Intel x86)
+						&lt;main&gt;:
+						push   %ebp
+						mov    %esp,%ebp
+						and    $0xfffffff0,%esp
+						sub    $0x10,%esp
+						movl   $0x8048718,0x4(%esp)
+						movl   $0x804a020,(%esp)
+						call   0x8048500 <_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc@plt>
+						mov    $0x0,%eax
+						leave  
+						ret
+					---
+					### High-Level (C++)
+						int main(){
+							std::cout << "Hello, World\n";
+							return 0;
+						}
+					---
+					### Complete C++ Program
+						#include &lt;iostream&gt;
+						
+						int main(){
+							std::cout << "Hello, World!\n";
+							return 0;
+						}
+					Now, let's take a look at each part of this code and examine each part of the syntax.
+					---
+					### Program Parts
+						#include &lt;iostream&gt;
+					* This line is called a *preprocessor directive*.
+					* It communicates with a phase of the C++ compiler called the *preprocessor*, telling it to include code from a file named "*iostream*", which is a C++ library.
+					* The *iostream* library contains code that is used for input and output activities.
+					---
+					### Program Parts
+						int main()
+					* This line is called a *function header*.
+					* It begins the definition of a function called "main".
+					* Every C++ program *must* contain a `main()` function.
+						* The main() function tells the computer where to begin executing.
+						* Instructions will be executed one at a time, starting with the first line of main.
+					---
+					### Program Parts
+						{
+
+						}
+					* The *curly braces* enclose a *block* of code in C++.
+					* *block* - a set of related C++ statements that perform an action
+					* Every opening curly brace must match with a closing brace.
+						* We indent the code between the { and the }.
+					---
+					### Program Parts
+						std::cout << "Hello, World\n";
+					* This *statement* sends the words "Hello, World" to the screen.
+					* `std::cout` is the name of the *standard output stream*
+						* A *stream* is a one-way flow of data from the point of view of the program.
+					* << is the *stream insertion operator*, used to place things into a stream.
+					---
+					### Program Parts
+						std::cout << "Hello, World\n";
+					* "Hello, World!\n" is a *string literal* 
+						* a *string* is just a collection of characters that are treated as a single unit.
+					* String *literal*s are always surrounded by double-quotes.
+						* *literal* is a value that is typed directly into the source code, in a representation that the programming language recognizes as a value of a recognized type. Literal values must be formatted according to the syntax rules of the language.
+					---
+					### Escape Characters
+						std::cout << "Hello, World\n";
+					* We often want to include *control characters* in our *string literals*, but we don't have the ability to type these in directly. C++ allows the use of *escape characters* for this purpose.
+						* *escape character* - any character combination beginning with "\", used to represent a character that cannot otherwise be represented in a string literal.
+					---
+					### Escape Character Examples
+						Code     Meaning
+						-----------------
+						\n      newline (think of the &lt;ENTER&gt; key)
+						\t      tab character
+						\"      allows a double-quote in a string literal
+						\\      allows a backslash in a string literal
+						\r      carriage-return (used in Windows line endings: "\r\n")
+					---
+					### Program Parts
+						return 0;
+					* This line terminates the program by causing the `main()` function to return the value `0` to the operating system.
+						* No code following this line would ever be executed; this means that the `return 0`; line will always be the last line in `main()`.
+					* The operating system considers zero to be an indication that the program ran normally.
+						* Other values are possible, and we will use them later.
+					---
+					### Terms for  Program Parts
+					* **preprocessor** : compiler component that works on the source code itself. Directives start with # symbol.
+					* **library or header** : a file containing C++ code that adds functionality to your program.
+					* **statement** : a single logical step expressed in C++ (usually one line) Ends with a semicolon!
+					* **stream** : one-way flow of data in a program
+					* **literal** : a data value that is hard-coded in a program
+					* **string** : a collection of characters treated as a single data value
+					* **block** : a collection of related statements surrounded by curly braces
+					---
+					### High-Level to Executable file
+					1. Create file containing the program with a text editor.
+					2. Run preprocessor to convert source file directives to source code program statements.  
+					3. Run compiler to convert source program into machine instructions.  
+					4. Run linker to connect hardware-specific code to machine instructions, producing an executable file.  
+					
+					* Steps 2–4 are often performed by a single command or button click.
+					* Errors detected at any step will prevent execution of following steps.
+					---
+					### Compiler Chain
+					![](./assets/compilechain.png)
 				</section>
 			</div>
 		</div>
