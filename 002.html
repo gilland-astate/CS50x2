@@ -1,0 +1,194 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Section Two</title>
+
+		<link rel="stylesheet" href="./dist/reset.css">
+		<link rel="stylesheet" href="./dist/reveal.css">
+		<link rel="stylesheet" href="./dist/theme/black.css">
+
+		<!-- Theme used for syntax highlighted code -->
+		<link rel="stylesheet" href="./plugin/highlight/monokai.css">
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section data-markdown>
+					# Section Two
+					Introduction to C++
+					---
+					### Complete C++ Program
+						#include &lt;iostream&gt;
+						
+						int main(){
+							std::cout << "Hello, World!\n";
+							return 0;
+						}
+					Now, let's take a look at each part of this code and examine each part of the syntax.
+					---
+					### Program Parts
+						#include &lt;iostream&gt;
+					* This line is called a *preprocessor directive*.
+					* It communicates with a phase of the C++ compiler called the *preprocessor*, telling it to include code from a file named "*iostream*", which is a C++ library.
+					* The *iostream* library contains code that is used for input and output activities.
+					---
+					### Program Parts
+						int main()
+					* This line is called a *function header*.
+					* It begins the definition of a function called "main".
+					* Every C++ program *must* contain a `main()` function.
+						* The main() function tells the computer where to begin executing.
+						* Instructions will be executed one at a time, starting with the first line of main.
+					---
+					### Program Parts
+						{
+
+						}
+					* The *curly braces* enclose a *block* of code in C++.
+					* *block* - a set of related C++ statements that perform an action
+					* Every opening curly brace must match with a closing brace.
+						* We indent the code between the { and the }.
+					---
+					### Program Parts
+						std::cout << "Hello, World\n";
+					* This *statement* sends the words "Hello, World" to the screen.
+					* `std::cout` is the name of the *standard output stream*
+						* A *stream* is a one-way flow of data from the point of view of the program.
+					* << is the *stream insertion operator*, used to place things into a stream.
+					---
+					### Program Parts
+						std::cout << "Hello, World\n";
+					* "Hello, World!\n" is a *string literal* 
+						* a *string* is just a collection of characters that are treated as a single unit.
+					* String *literal*s are always surrounded by double-quotes.
+						* *literal* is a value that is typed directly into the source code, in a representation that the programming language recognizes as a value of a recognized type. Literal values must be formatted according to the syntax rules of the language.
+					---
+					### Escape Characters
+						std::cout << "Hello, World\n";
+					* We often want to include *control characters* in our *string literals*, but we don't have the ability to type these in directly. C++ allows the use of *escape characters* for this purpose.
+						* *escape character* - any character combination beginning with "\", used to represent a character that cannot otherwise be represented in a string literal.
+					---
+					### Escape Character Examples
+						Code     Meaning
+						-----------------
+						\n      newline (think of the &lt;ENTER&gt; key)
+						\t      tab character
+						\"      allows a double-quote in a string literal
+						\\      allows a backslash in a string literal
+						\r      carriage-return (used in Windows line endings: "\r\n")
+					---
+					### Program Parts
+						return 0;
+					* This line terminates the program by causing the `main()` function to return the value `0` to the operating system.
+						* No code following this line would ever be executed; this means that the `return 0`; line will always be the last line in `main()`.
+					* The operating system considers zero to be an indication that the program ran normally.
+						* Other values are possible, and we will use them later.
+					---
+					### Terms for  Program Parts
+					* **preprocessor** : compiler component that works on the source code itself. Directives start with # symbol.
+					* **library or header** : a file containing C++ code that adds functionality to your program.
+					* **statement** : a single logical step expressed in C++ (usually one line) Ends with a semicolon!
+					* **stream** : one-way flow of data in a program
+					* **literal** : a data value that is hard-coded in a program
+					* **string** : a collection of characters treated as a single data value
+					* **block** : a collection of related statements surrounded by curly braces
+					---
+					### High-Level to Executable file
+					1. Create file containing the program with a text editor.
+					2. Run preprocessor to convert source file directives to source code program statements.  
+					3. Run compiler to convert source program into machine instructions.  
+					4. Run linker to connect hardware-specific code to machine instructions, producing an executable file.  
+					
+					* Steps 2–4 are often performed by a single command or button click.
+					* Errors detected at any step will prevent execution of following steps.
+					---
+					### Compiler Chain
+					![](./assets/compilechain.png)
+					---
+					### Integrated Developer Environments
+					* Also commonly referred to as IDEs.
+					* Combine all the tools needed to write, compile, and debug a program into a single software application.
+					* We will be using the Mimir environment for our IDE.
+					* Other examples are Visual Studio Code, Visual Studio, Eclipse, Intellij
+					---
+					### Common Programming Elements
+					* Keywords
+					* Programmer-Defined Identifiers
+					* Operators
+					* Punctuation
+					* Syntax
+					---
+					### Algorithm
+					![](./assets/algo-example.png)  
+					---
+					### Translated to C++
+						#include &lt;iostream&gt;
+						
+						int main() {
+							double hours, rate, pay;
+
+							std::cout << "How many hours did you work? ";
+							std::cin >> hours;
+
+							std::cout << "How much do you get paid per hour? ";
+							std::cin >> rate;
+
+							pay = hours * rate;
+							std::cout << "You have earned $" << pay << std::endl;
+							return 0;
+						}
+					---
+					### Keywords
+					* These *keywords* are reserved specifically by the language and may not be used outside of their special meaning.
+					* These are like `double`, `using`, `return`
+					---
+					### Programmer-Defined Identifiers
+					* These identifiers are names made up by the programmer.
+					* Not part of the C++ language.
+					* Used to represent various things: variable names, functions, etc
+					* These are like `hours`, `rate`, `pay`
+					---
+					### Operators
+					* These are used to perform actions on data
+					* May types of operators
+						* Arithmetic: `+`, `-`, `*`, `/`
+						* Assignment: `=`
+					* `=`, `*`, `::`, `>>`, and `<<` are all operators we used earlier
+					---
+					### Punctuation
+					* Characters that mark the end of a statement, or that seperate items in a list.
+					* `;` and `,` were used in the previous code.
+					---
+					### Syntax
+					* Syntax is the rules of grammar that must be followed when writing the program.
+					* Controls the use of keywords, operators, programmer-defined identifiers, and punctuation.
+					---
+					### Variables
+					* Variables are named storage locations in a computer's memory for holding a piece of data.
+					* We specify the variable type, followed by a programmer-defined identifier to create a variable. This is called a variable declaration.
+					* Previously we used `double hours, rate, pay;` to define 3 variables of type `double` (double-precision floating point number).
+					* A variable in C++ can only hold the type that it is defined to hold.
+				</section>
+			</div>
+		</div>
+
+		<script src="./dist/reveal.js"></script>
+		<script src="./plugin/notes/notes.js"></script>
+		<script src="./plugin/markdown/markdown.js"></script>
+		<script src="./plugin/highlight/highlight.js"></script>
+		<script>
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/
+			Reveal.initialize({
+				hash: true,
+
+				// Learn about plugins: https://revealjs.com/plugins/
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
+			});
+		</script>
+	</body>
+</html>

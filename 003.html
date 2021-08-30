@@ -1,0 +1,145 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Section Three</title>
+
+		<link rel="stylesheet" href="./dist/reset.css">
+		<link rel="stylesheet" href="./dist/reveal.css">
+		<link rel="stylesheet" href="./dist/theme/black.css">
+
+		<!-- Theme used for syntax highlighted code -->
+		<link rel="stylesheet" href="./plugin/highlight/monokai.css">
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section data-markdown>
+					# Section Three
+					Variables and Special Characters
+					---
+					### Special Characters
+					| Character | Name | Meaning |
+					| --- | --- | --- |
+					| // | Double slash | Beginning of a comment |
+					| # | Pound Sign (Hash) | Beginning of a preprocessor directive |
+					| < > | Open/Close brackets | Mainly used to enclose an `#include` |
+					---
+					### Special Characters
+					| Character | Name | Meaning |
+					| --- | --- | --- |
+					| ( ) | Open/Close parenthesis | Argument passing, function header, etc. |
+					| { } | Open/Close braces | Encloses a block of code, sets scope |
+					| " " | Open/Close quotation marks | Enclose a string of characters |
+					| ; | Semicolon | End of statement |
+					---
+					### Comments
+					* Comments allow us to add non-executing parts to our code to increase readability.
+					* Two types of comments
+						* `//` - Line level comments, these comments end at the next newline
+						* `/* */` - Block level comments, these comments start at the `/*` and end at `*/`  
+
+								int a; // This is a comment
+								/* int a; This is all a comment */
+					---
+					### Variables
+					As we have already established, it's pretty hard to remember numbers. So it would be helpful if we had a way of referring to
+					memory addresses as a descriptive name. Variables allow us to just this.
+					* *variable* - a named storage location for data within a program
+					---
+					### Variables
+					* *variable declaration* - a statement used to tell the compiler that a new variable should be created; contains the identifier and type for the variable.
+
+							int temperature;
+							char wind;
+					The *declaration statement* above tells the compiler to create a variable named `temperature` that will store an *integer*.
+					---
+					### Literal
+					* *literal* - a value that is written into a programs code
+					
+							int temperature = 12;
+							char wind = 'E';
+							double time = 12.5;
+					The *literal*s above are the items to the right of the assignment operator.
+					---
+					### Identifiers
+					* *identifier* - a programmer-defined name for some part of the program: function, variable, etc.
+
+							int temperature = 12;
+							void setTemperature();
+					The *identifiers* above are `temperature` and `setTemperature`.
+					---
+					### Identifier Naming
+					* Names should represent the purpose of the item being named. Thus, `int temperature` should be an integer variable that holds a temperature.
+					* The first character of an identifier must be an alphabetic character or an underscore (`_`)
+					* After the first, you can use alphabetic, numeric, or underscore characters.
+					* Identifiers **must not be** a keyword.
+					* Identifiers are case-sensitive. (`temperature` & `Temperature` are different)
+					---
+					### Data Types
+					So, what types of data can we store? The tables below will give a sampling of the major data types you will encounter throughout this class.
+
+					| Type Name | Description | Literal Examples |
+					| --- | --- | --- |
+					| int | Integer number | 74, -193 |
+					| double | Floating point number | 3.14, -0.1 |
+					| char | Single character | 'a', '9' |
+					---
+					### Data Types
+					| Type Name | Description | Literal Examples |
+					| --- | --- | --- |
+					| bool | Boolean value | `true`, `false` |
+					| std::string | String value | "Hello", "beepBoop5"
+
+					These are not all of the types you will encounter but are a good look at the main ones.
+					---
+					### Memory Footprint
+					* Each data type has a different memory footprint size.
+					* To determine the memory footprint of a data value you can ask C++ by using the `sizeof()` function
+
+							std::cout << sizeof(int);
+							> 4
+					---
+					### Integers
+					* `int` is the primary integer type and can range from ~-2B to ~2B and is 4 bytes
+					* `long` gives you double the precision but takes 8 bytes
+					* `unsigned` allows you to gain precision by dropping the negative numbers but still same memory footprint
+					* `short` halves our memory footprint to 2 bytes
+					---
+					### Integer Literals
+					* Integer literals by default are stored as `int`s
+					* Integer literals that begin with a `0`(zero) are treated as octal (base 8): `02322` = `1234`
+					* Integer literals that begin with `0x` are treated as hexidecimal (base 16): `0x4D2` = `1234`
+					---
+					### Characters
+					* The `char` datatype is primarily used to hold a single character
+					* It may also be used to hold very small positive numbers (up to 255)
+					* Uses 1 byte of memory
+					* The numeric value of the character is stored in memory
+
+					![](./assets/charmemory.png)
+					---
+
+				</section>
+			</div>
+		</div>
+
+		<script src="./dist/reveal.js"></script>
+		<script src="./plugin/notes/notes.js"></script>
+		<script src="./plugin/markdown/markdown.js"></script>
+		<script src="./plugin/highlight/highlight.js"></script>
+		<script>
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/
+			Reveal.initialize({
+				hash: true,
+
+				// Learn about plugins: https://revealjs.com/plugins/
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
+			});
+		</script>
+	</body>
+</html>
