@@ -1,0 +1,125 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Section Four</title>
+
+		<link rel="stylesheet" href="./dist/reset.css">
+		<link rel="stylesheet" href="./dist/reveal.css">
+		<link rel="stylesheet" href="./dist/theme/black.css">
+
+		<!-- Theme used for syntax highlighted code -->
+		<link rel="stylesheet" href="./plugin/highlight/monokai.css">
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section data-markdown>
+					# Section Four
+					Operators
+					---
+					### Families of Operators
+					* C++ Operators can be divided into families
+						* Assignment Operators
+						* Arithmetic Operators
+						* Stream Operators
+						* Relational Operators
+						* Logical Operators
+						* Other Operators
+					---
+					### Classes of Operators
+					* In C++ we can have 3 different classes of Operators depending upon the number of operands.
+						* *unary* - single operand   --   `-5`
+						* *binary* - two operands   --   `12 + 8`
+						* *ternary* - three operands   --   `exp1 ? exp2 : exp3`
+					---
+					### Operator Associativity and precedence
+					* *operator associativity* - the direction in which an operator evaluates						
+					* *operator precedence* - the order in which operators evaluate
+							ans = 9 + 5
+					The `+` operator associates from left-to-right and the `=` associates from right to right-to-left.
+					But, since the `+` has a higher precedence than `=`.
+
+					[Operator Precedence Chart](https://en.cppreference.com/w/cpp/language/operator_precedence)
+					---
+					### Assignment Operator
+					* One of the first operators most people encounter is the *assignment operator* (`=`). Used to change the value of a variable.
+					* It should always be read as "assigned" or "is assigned". It should **never** be read as "equals"!
+							int temperature = 82;
+							// `temperature` is assigned the value 82.
+					* Assignment associativity is from right to left, precedence is low.
+					---
+					### Arithmetic Operators
+					* These operators are used for performing numeric calculations.
+					* These are all binary operators
+					* These operators can be chained and will evaluate and follow typical order of operations you are familiar with in Mathematics
+					* Associativity: Left-to-Right, Precedence is mid
+					---
+					| Operator | Operation | Example | `ans` |
+					| --- | --- | --- | --- |
+					| `+` | addition | `ans = 9 + 5;` | 14 |
+					| `-` | subtraction | `ans = 9 - 5;` | 4 |
+					| `*` | multiplication | `ans = 9 * 5;` | 45 |
+					| `/` | division | `ans = 9 / 5;` | 1 |
+					| `%` | modulus | `ans = 9 % 5;` | 4 |
+					---
+					### Arithmetic Tips / Tricks
+					* Beware the *division operator*! 
+						* If both operands are integers the result will be an integer.
+						* If either operand is floating point the result will be a floating point as expected.
+					* The *modulus operator* (`%`) computes the remainder resulting from integer division
+						* `14 % 3` will return `2`
+						* `14 % 3.0` will `error`
+					---
+					### Type Conversion and Casting
+					* The type of a variable must always match the type of the data you are storing in it.
+					* Some type conversion is possible, and some will take place automatically.
+					* *explicit conversion* - when you convert a value to a different type by casting
+							static_castlt;int&gt;(3.14) // Produces the value 3
+							static_castlt;double&gt;(3) // Produces the value 3.0
+					---
+					### Type Conversion and Coercion
+					* *implicit conversion* - when a value is converted to a different type automatically by the compiler
+					* Implicit conversion when storing a more-precise type into a less-precise type can lead to errors.
+							double numberOne = 1; // numberOne is storing 1.0
+							int numberTwo = 4.75; // numberTwo is storing 4
+					* *type coercion* - when an operand is automatically converted to another data type
+					---
+					### Type Coercion
+					* *promotion* - when an operand is coerced to a more-precise data type
+					* *demotion* - when an operand is coerced to a less-precise data type
+							int a = 2; double b = 5.0;
+							a = b; // b will be demoted when assigned to a
+							b = a; // a will be promoted when assigned to b
+					---
+					### Coercion rules
+					* When operating on values of different data types, the lower one is promoted to the type of the higher one.
+					* When using the *assignment operator* (=), the type of the expression on the right will be converted to the type of variable on the left.
+					---
+					### Stream Operators
+					* We have already seen code using the *stream insertion operator* (`&lt;&lt;`) and the *stream extraction operator* (`&gt;&gt;`)
+					* The stream operators function as a binary operator with the stream in the left operand and the item to be inserted in the right operand.
+					* The associativity of the stream operators is from left-to-right and is slightly lower than arithmetic.
+				</section>
+			</div>
+		</div>
+
+		<script src="./dist/reveal.js"></script>
+		<script src="./plugin/notes/notes.js"></script>
+		<script src="./plugin/markdown/markdown.js"></script>
+		<script src="./plugin/highlight/highlight.js"></script>
+		<script>
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/
+			Reveal.initialize({
+				hash: true,
+
+				// Learn about plugins: https://revealjs.com/plugins/
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
+			});
+		</script>
+	</body>
+</html>

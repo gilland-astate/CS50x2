@@ -94,6 +94,62 @@
 					| std::string | String value | "Hello", "beepBoop5"
 
 					These are not all of the types you will encounter but are a good look at the main ones.
+				</section>
+				<section>
+					<div data-markdown>
+					### Keywords
+					</div>
+					<div>
+						<img src="./assets/keywordscpp.png" alt="keywords in C++" width="70%" align="right"/>
+						There are 84 keywords in C++ which consists of all the keywords from the C language, plus new ones related to C++'s object-oriented focus.
+					</div>
+				</section>
+				<section data-markdown>
+					### Declaration vs Definition/Initialization
+					* When we declare a variable we simply set aside a memory location and assign that location a name.
+					* When we define/initialize a variable we assign that memory location a value.
+						* An undefined/uninitialized variable will contain a value, however it **will NOT be** what you think it will be.
+						* Memory is constantly being recycled by the OS and you will get whatever was in that location last. "garbage"
+					---
+					### `auto` Keyword
+					* C++11 added the `auto` keyword which allows a variable declaration to infer its type from the definition of said variable.
+
+							auto decimalNumber = 1.52;
+							auto answerCorrect = true;
+
+					* In the examples above `decimalNumber` will be a `double` and `answerCorrect` will be a `boolean`.
+					* Be aware that an `auto` variable cannot simply be declared it must be defined. Thus, strict typing in C++ is preserved.
+					---
+					### Using `auto`
+					* Defining variables using `auto` should only be used when code readability is increased. Simply using `auto` to define integers isn't appropriate.
+					* However, compare the following snippet for an example where using auto is beneficial and increases readability.
+
+							std::vector&lt;std::string&gt; nameList;
+							
+							std::vector&lt;std::string&gt;::size_type size = nameList.size();
+
+							auto size = nameList.size();
+					---
+					### Variable Lifetime
+					* Declared variables have a "life span" within the context of our code.
+						* *scope* - the section of a program in which an identifier is defined
+						* C++ has two sets of rules regarding scope:
+							* *global scope* - identifiers are known from the point at which they are declared until the end of the program
+							* *local scope* - identifiers are known from the point at which they are declared until the end of the *block* in which they are declared.
+					---
+					### Variable Lifetime
+						#include &lt;iostream&gt;
+
+						const double PI = 3.14; // Example of a global scoped variable.
+
+						int main () {
+							double r = 1.5; // Example of a locally scoped variable.
+
+							double area = PI * r * r; // Example of a locally scoped variable.
+
+							return 0;
+						}
+
 					---
 					### Memory Footprint
 					* Each data type has a different memory footprint size.
@@ -121,6 +177,48 @@
 
 					![](./assets/charmemory.png)
 					---
+					### C-Strings
+					* C-strings are a holdover from the C language.
+					* Default behavior of C++ string literals.
+					* Defined as an array of characters, `char[]`
+					* When using auto with string literals you will get a C-string.
+					* We will talk more about these later.
+					---
+					### Standard Library Strings
+					* Must include string library - `#include &lt;string&gt;`
+					* Must be defined using `std::string` or `using std::string`
+					* Works differently than C-strings and much easier to work with.
+					* When writing code in this class it is expected that you will use `std::string` when dealing with string variables.
+					* Memory footprint depends on the overall size of the string itself.
+					---
+					### Floating-point Types
+					* `double` is the primary floating point type, footprint is 8 bytes
+					* `float` is a less precise floating point type at 4 bytes
+					* Floating point numbers are stored in a form similar to scientific notation and aren't entirely *precise*
+					* When comparing floating point numbers we must use *epsilon comparison*s
+					* All floating point numbers are signed.
+					---
+					### Floating-point Literals
+					* Can be represented in two ways:
+						* Fixed point (decimal) notation
+							* 67.45
+						* E notation
+							* 6.745E1
+					* Literals are `double` by default
+					---
+					### Boolean 
+					* Represents values that are `true` or `false`
+					* 1 byte in memory and is stored as small integers
+					* `false` is represented by 0, `true` is 1
+					* When comparing booleans know that **ONLY** the value 0 is considered `false`. **ALL OTHER** values are considered `true`, thus it's unwise to compare `bool` to anything other than `true` and `false`.
+					---
+					### Named Constants
+					* A *type modifier* is a C++ keyword that is used in conjunction with a type name to change that type's properties in some way.
+					* *Named Constant* - a variable which is modified with the `const` keyword whose content cannot be changed during program execution
+					* A `const` data type must be defined/initialized when it is declared.
+					* Named in uppercase letters
+							const double PI = 3.14;
+							const int NUM_STATES = 50;
 
 				</section>
 			</div>
