@@ -50,6 +50,7 @@
 							int temperature = 82;
 							// `temperature` is assigned the value 82.
 					* Assignment associativity is from right to left, precedence is low.
+					* There are some others but we first need to talk arithmetic!
 					---
 					### Arithmetic Operators
 					* These operators are used for performing numeric calculations.
@@ -73,12 +74,41 @@
 						* `14 % 3` will return `2`
 						* `14 % 3.0` will `error`
 					---
+					### Combined Assignment
+					* *Combined assignment operators* provide a shorthand for arithmetic and assignment operations.
+							a = a + 12;
+					* This is a very easy to understand and very common occurrence in programming. C++ allows us to use combined operators to increase readability and reduce repetition.
+					---
+					### Combined Assignment
+						a += 12;
+					* Instead of writing the previous statement we can combine our arithmetic operator with the assignment operator.
+					* Combined operators work by both applying the arithmetic operator to the Left and Right operands and then assigning the total back into the Left operand.
+					---
+					### Combined Assignment
+					| Operator | Example Usage | Equivalence |
+					| --- | --- | --- |
+					| `+=` | `x += 5;` | `x = x + 5;` |
+					| `-=` | `x -= 5;` | `x = x - 5;` |
+					| `*=` | `x *= 5;` | `x = x * 5;` |
+					| `/=` | `x /= 5;` | `x = x / 5;` |
+					| `%=` | `x %= 5;` | `x = x % 5;` |
+					---
+					### Combined Assignment
+					* (Assuming x = 10)
+					| Operator | Example Usage | `x` after statement |
+					| --- | --- | --- |
+					| `+=` | `x += 5;` | `15` |
+					| `-=` | `x -= 5;` | `5` |
+					| `*=` | `x *= 5;` | `50` |
+					| `/=` | `x /= 5;` | `2` |
+					| `%=` | `x %= 5;` | `0` |
+					---
 					### Type Conversion and Casting
 					* The type of a variable must always match the type of the data you are storing in it.
 					* Some type conversion is possible, and some will take place automatically.
 					* *explicit conversion* - when you convert a value to a different type by casting
-							static_castlt;int&gt;(3.14) // Produces the value 3
-							static_castlt;double&gt;(3) // Produces the value 3.0
+							static_cast&lt;int&gt;(3.14) // Produces the value 3
+							static_cast&lt;double&gt;(3) // Produces the value 3.0
 					---
 					### Type Conversion and Coercion
 					* *implicit conversion* - when a value is converted to a different type automatically by the compiler
@@ -98,10 +128,20 @@
 					* When operating on values of different data types, the lower one is promoted to the type of the higher one.
 					* When using the *assignment operator* (=), the type of the expression on the right will be converted to the type of variable on the left.
 					---
+					### Overflow and Underflow
+					* *Overflow* and *Underflow* occur when assigning a value that is too large (*overflow*) or too small (*underflow*) to be held in a variable.
+					* The variable will contain this value by "wrapping around" to the next value.
+					* Different systems may display a warning/error, stop the program, or continue execution using the incorrect value.
+					---
 					### Stream Operators
 					* We have already seen code using the *stream insertion operator* (`&lt;&lt;`) and the *stream extraction operator* (`&gt;&gt;`)
 					* The stream operators function as a binary operator with the stream in the left operand and the item to be inserted in the right operand.
 					* The associativity of the stream operators is from left-to-right and is slightly lower than arithmetic.
+					---
+					### Relational and Logical Operators
+					* We will cover these in later sections, but for now:
+						* *relational operators* - Operators dealing with one value in relation to another (less than, greater than, equal)
+						* *logical operators* - Operators dealing with logical patterns (AND, OR, NOT)
 				</section>
 			</div>
 		</div>

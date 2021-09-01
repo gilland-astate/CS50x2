@@ -1,0 +1,165 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Section Five</title>
+
+		<link rel="stylesheet" href="./dist/reset.css">
+		<link rel="stylesheet" href="./dist/reveal.css">
+		<link rel="stylesheet" href="./dist/theme/black.css">
+
+		<!-- Theme used for syntax highlighted code -->
+		<link rel="stylesheet" href="./plugin/highlight/monokai.css">
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section data-markdown>
+					# Section Five
+					Input/Output
+					---
+					### C++ Streams
+					* A *stream* is a one-way flow of information. Output streams flow from the computer outward to the user. Input streams flow from the user to the computer.
+					* The standard output stream is `std::cout`, and the standard input stream is `std::cin`.
+					* C++ follows Unix thinking when dealing with streams in which all items whether they be file, console, network, etc function in a similar fashion.
+					---
+					### `cout` Object
+					* `cout`(console output) is an object in the `iostream` (input/output stream) library.
+					* The object functions as a stream that displays output to the console, which is typically the monitor.
+					* We use the *stream insertion operator* (<<) to send output to `cout`.
+					* We can chain the insertion operator to display multiple results to the screen.
+							std::cout << "Hello" << " World!";
+					---
+					### `endl` Manipulator
+					* `endl` is used to end the line of output when using stream insertion operator. It clears the buffer as well.
+					* `endl` has benefits over `\n` in that it clears the buffer before moving onto other lines of code.
+						* Since computers are multi-process now the CPU can look at tasks and determine which could be ran parallel
+						* If a task crashes before finishing or hangs and you don't have the `endl` manipulator you may not output all of the items to the screen.
+					---
+					### `cin` Object
+					* `cin`(console input) is an object similar to `cout`.
+					* The object functions as a stream that inputs from the console, which is typically the keyboard.
+					* We can use the *stream extraction operator* (>>) to retrieve output from `cin`.
+					* We can chain the extraction operator to pull multiple results from the stream.
+							std::cin >> firstName >> lastName;
+					---
+					### Stream Extraction
+					* * The *type* of the variable that is intended to store the data must match the *type* of the data being extracted, otherwise the operation may fail.
+					* Input from `cin` is *whitespace delimited*, which means it will continue until it encounters a whitespace character.
+						* It will read up-to and including the whitespace character and then discard it.
+					* Chaining `cin` reads together with the stream extraction operators means that each additional variable will wait for input until all are filled.
+					---
+					### Simple Example
+						int     temperature;
+						double  rainfall;
+						cout << "Enter the temperature in degrees Fahrenheit: ";
+						cin  >> temperature;
+						cout << "Enter the day's rainfall total: ";
+						cin  >> rainfall;
+					* The code above will read a temperature and rainfall from the user (entered from the keyboard) storing the values in the respective variables.
+					* **NOTICE** the necessity of *prompting* the user before reading the values!
+					---
+					### Streams
+					* At this point we have introduced the *standard input stream* and the *standard output stream*, however C++ provides the opportunity to create other streams as well.
+						* All input streams support the same operations.
+						* All output streams support the same operations.
+						* So, if you can use `std::cin` and `std::cout`, you can use any stream!
+					---
+					### Files
+					* *file* - a collection of related data stored on a device other than main memory and accessed by means of a *file name*.
+					* *file name* - a string that uniquely identifies a single file on the system.
+
+					In the most basic sense a file, is just a blob of data that we store somewhere and it's name simply refers to the location of that file.
+					---
+					### Files and Streams
+					* We can work with files the same way we work with the standard streams.
+					* We first begin by including the `&lt;fstream&gt;` library.
+					* We will then open the file in *text mode*, meaning the contents are encoded as plain [ASCII](https://en.cppreference.com/w/cpp/language/ascii) text.
+						* This will "feel" exactly the same as interacting with the standard streams.
+					* We can also open files in *binary mode* which we will talk about later.
+					---
+					### File Operations
+					* Working with files will involve a series of high-level steps.
+						* Opening the File - This will associate the filename with the physical file and establish a stream to/from the file.
+						* Read or write data from/to the file - We do this just like reading/writing to the standard in/out streams.
+						* Close the file - This allows use to flush the buffers, and release the resources associated with the file back to the OS.
+					---
+					### Output File Streams
+						#include &lt;fstream&gt;
+
+						double value1 = 4.4, value2 = 3.8;
+						std::ofstream fout;
+						
+						fout.open("myOutFile.txt");
+						fout << value1 << std::endl << value2;
+						fout.close();
+						
+					* The code above will write the `value1` and `value2` contents `4.4` and `3.8` respectively out to a file named *myOutFile.txt* in the current directory.
+					---
+					### Input File Streams
+						#include &lt;fstream&gt;
+
+						double value1, value2;
+						std::ifstream fin;
+						
+						fin.open("myInFile.txt");
+						fin >> value1 >> value2;
+						fin.close();
+	
+						std::cout << value1 << ", " << value2 << std::endl;
+					* The code above will read into `value1` and `value2` the contents of the file *myInFile.txt* and output them to the screen.
+					---
+					### File I/O Tips & Tricks
+					* You can declare the stream and open on the same line.
+							std::ofstream fout("myOutFile.txt");
+					* A `std::fstream` object can either input or output (or even both), but you must specify the mode when opening.
+							std::fstream fs;
+							// Open for input
+							fs.open("myFile.txt", std::fstream::in); 
+							fs.close();
+							// Open for output at the end of the file.
+							fs.open("myFile.txt", std::fstream::out | 
+							                      std::fstream::app);
+					---
+					### File Open Failures
+					* Opening a input file may **fail** if:
+						* The file doesn't exist or is misnamed.
+						* You do not have permission to read the file.
+						* All OS file resources are in use.
+					* Opening an output file may **fail** if:
+						* The file exists, but you don't have permission to overwrite it.
+						* You do not have permission to write to the directory.
+						* All OS file resources are in use.
+					---
+					### Testing for Failures
+					* We must always test if our files opened properly, failure to do so can result in a program crash (**bad**).
+					* To do so we will use an `if` control structure and the stream function `is_open()`.
+							std::ifstream fin("myInputFile.txt");
+							if( !fin.is_open() ) {
+								std::cout << "Failed to open file." << std::endl;
+								exit(1);
+							}
+					This `if` structure will test if the file is open (`true` if open), and if it's not (`!`), then report to the screen and exit with an error code (`1`);
+				</section>
+			</div>
+		</div>
+
+		<script src="./dist/reveal.js"></script>
+		<script src="./plugin/notes/notes.js"></script>
+		<script src="./plugin/markdown/markdown.js"></script>
+		<script src="./plugin/highlight/highlight.js"></script>
+		<script>
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/
+			Reveal.initialize({
+				hash: true,
+
+				// Learn about plugins: https://revealjs.com/plugins/
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
+			});
+		</script>
+	</body>
+</html>
