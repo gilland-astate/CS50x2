@@ -142,6 +142,40 @@
 								exit(1);
 							}
 					This `if` structure will test if the file is open (`true` if open), and if it's not (`!`), then report to the screen and exit with an error code (`1`);
+					---
+					### More Stream Manipulators
+					* We talked a bit about the `endl` stream manipulator, but now let's talk a bit about the other manipulators to make our output clearer.
+					* Control how output displays for numeric, string data:
+						* size
+						* position
+						* number of digits
+					* We require the inclusion of the `iomanip` header
+					---
+					### `std::setw(x)` Manipulator
+					* Can be used to setup tables properly for displaying data.
+					* Controls the width of **ONLY** the next item in the stream.
+					* Prints in a field at least `x` wide. Will print the entirety of the object so make sure your width specified is enough.
+					* Does **NOT** truncate to fit in the space specified.
+					---
+					### `std::left` & `std::right` Manipulators
+					* When using `setw(x)` it's often nice to be able to left or right-align the data in the columns.
+					* Adding `std::left` will left align **ALL** content in the following stream; Adding `std::right` will right align **ALL** content in the following stream.
+					* These will cancel the previous opposing manipulator out. 
+							cout << setw(10) << right << "right" 
+							     << setw(10) << left << "left";
+							     
+							     rightleft
+					---
+					### `std::setprecision(x)` Manipulators
+					* Will affect **ALL** following stream operations from the point at which it is set until it is changed.
+					* Used to affect the amount of digits shown in a numerical output.
+					* When used alone the `x` value will determine the number of significant digits to be displayed.
+					---
+					### `std::fixed` and `std::showpoint` Manipulators
+					* When `std::setprecision(x)` is used along with the `std::fixed` manipulator instead of simply displaying `x` significant digits it will output `x` decimal digits in addition to the entirety of the whole number.
+					* `std::showpoint` can be used to force following stream operations to always print the decimal point for floating-point values including those that are represent whole numbers.
+					---
+					### A
 				</section>
 			</div>
 		</div>
