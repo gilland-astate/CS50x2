@@ -1,0 +1,169 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Section Six</title>
+
+		<link rel="stylesheet" href="./dist/reset.css">
+		<link rel="stylesheet" href="./dist/reveal.css">
+		<link rel="stylesheet" href="./dist/theme/black.css">
+
+		<!-- Theme used for syntax highlighted code -->
+		<link rel="stylesheet" href="./plugin/highlight/monokai.css">
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section data-markdown>
+					# Section Six
+					Selection
+					---
+					### Making Decisions
+					* One of the major items when talking about computers and what they excel at is making decisions, and in fact is at the heart of computing.
+					* We can talk about these decisions by looking at the choices we can make:
+						* Choose whether to perform an operation.
+						* Choose between possible outcomes.
+						* Select from a variety of choices.
+					* We typically think of these as yes/no, `true`/`false`, or *boolean* decisions.
+					---
+					### Decision Operators
+					* Relational operators allow us to compare our options in order to arrive at the correct decision path.
+					* **ALL** decisions must arrive at a clear `true` or `false` result. (*boolean expressions*).
+					* We use *relational operators* to help us arrive at the result of a decision.
+					* We also use *logical operators* to chain our decisions to add conditionals to our decisions.
+					---
+					### Relational Operators
+					| Operator | Description |
+					| --- | --- |
+					| `<` | Less-Than |
+					| `>` | Greater-Than |
+					| `<=` | Less-Than or Equal-To |
+					| `>=` | Greather-Than or Equal-To |
+					| `==` | Equal-To |
+					| `!=` | NOT Equal-To |
+					---
+					### Relational Operator Usage
+					* The result of each of these operators is always a *boolean expression*. -- `true` or `false`
+					* The results can be assigned to a variable. `bool` data type
+					* If `x` is `10`, then:
+							5 < 10;           // true
+							5 > 10;           // false
+							x == 10;          // true
+							x != 8;           // true
+							x == 8;           // false
+							bool y = x <= 10; // true
+							y == false;       // false
+							y == (x >= 10);     // true
+					---
+					### Logical Operators
+					| Operator | Description |
+					| --- | --- |
+					| `&&` | Logical AND |
+					| `\|\|` | Logical OR |
+					| `!` | NOT (Unary) |
+
+					* Be careful when inputing *logical operators* making sure to include both symbols of the operators, not doing so creates BINARY operators not LOGICAL.
+					---
+					### Logical Operator Usage
+					* We can use *logical operators* to combine with *relational operators* to increase the complexity of our resulting test condition.
+					* If `x` is `8`, `y` is `12.2`, and `z` is `8`, then:
+							3.4 < 9 || 9 < 0            // true
+							3 == 3 && 3 > 12            // false
+							9 < 4 || 0 > 3              // false
+							9 > 4 && 3 != 0             // true
+							x > 0 || x != z             // true
+							y > 0 && y <= x             // false
+							y < z && x >= z             // false
+							bool a = z > 0 && z < 100   // true
+					---
+					### Control Structures
+					* When we want to make decisions we use *control structures*. Sometimes these are referred to as statements they aren't *actual* statements.
+						* We refer to them as *control structures* in order to signify their importance in the structural control of the program.
+					* We will examine several *control structures* in the course of this class:
+						* `if`, `if-else` -- Selection
+						* `while`, `do-while`, `for` -- Repetition
+					---
+					### `if` Control Structure
+					* The `if` structure is the most basic form of *control structures*. The *syntax* is:
+							if(conditional_statement)
+								statement_to_be_executed_if_true;
+					* **EXAMPLE**:
+							int x;
+							std::cout << "Enter a value for x: ";
+							std::cin >> x;
+
+							if( x < 0 ) // Check if x is less than 0.
+								std::cout << "You entered a negative value.\n";
+					---
+					### `if` Control Structure
+					* Sometimes we need to execute additional statements. We may add a *block* of code to the *body* of the `if` control structure to accomplish this.
+					* **EXAMPLE**:
+							int x;
+							std::cout << "Enter a value for x: ";
+							std::cin >> x;
+
+							if( x < 0 ) {  // Check if x is less than 0.
+								std::cout << "You entered a negative value.\n";
+								x = 0;  // Ensure that we have non-negative value.
+							} // End of code block, everything inside will be executed
+					---
+					### `if-else` Control Structure
+					* Sometimes we also want to have a flow of execution that happens on the `false` outcome as well.
+						* "If it's raining, wear a rain coat, otherwise wear a short sleeve shirt"
+					* We can accomplish this with the `if-else` *control structure*. Syntax:
+							if(conditional_statement)
+								statement_to_be_executed_if_true;
+							else
+								statement_to_be_executed_if_false;
+					---
+					### `if-else` Example
+						int x;
+						std::cout << "Enter a value for x: ";
+						std::cin >> x;
+
+						if( x < 0 )  // Check if x is less than 0.
+							std::cout << "You entered a negative value.\n";
+						else
+							std::cout << "You entered a positive value.\n";
+					* Keep in mind you can have code *blocks* replacing the body of the `if` and `else`.
+							if(conditional_statement) {
+								statement_to_be_executed_if_true;
+							}
+							else {
+								statement_to_be_executed_if_false;
+							}
+					---
+					### `if-else` Tips & Tricks
+					* Decisions are **ALWAYS** binary. Meaning that only one of the two statements can ever occur, never both.
+					* The `else` part is always optional. Only use it if you need it.
+					* **ALWAYS INDENT** the *body* of your control structures, it allows you to determine ownership of statements when reading the code.
+					* It is recommended to always use blocks for the body of the if and else.
+						* Will save time debugging if more code is added later.
+					---
+					### Nested Control Structures
+					* As part of the *body* of any *control structure* we can place another *control structure*. This is known as *nesting*, or *nested control structures*.
+					
+
+				</section>
+			</div>
+		</div>
+
+		<script src="./dist/reveal.js"></script>
+		<script src="./plugin/notes/notes.js"></script>
+		<script src="./plugin/markdown/markdown.js"></script>
+		<script src="./plugin/highlight/highlight.js"></script>
+		<script>
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/
+			Reveal.initialize({
+				hash: true,
+
+				// Learn about plugins: https://revealjs.com/plugins/
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
+			});
+		</script>
+	</body>
+</html>
