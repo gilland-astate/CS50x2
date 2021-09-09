@@ -57,6 +57,16 @@
 							y == false;       // false
 							y == (x >= 10);     // true
 					---
+					### Non-numerical Comparison
+					* We can use *relational operators* on `char` datatypes and `string`s. However it is important to know how they work!
+						* The ASCII value of the individual characters are compared.
+								'A' < 'Z';        // true
+								'z' > 'a';        // true
+								'a' < 'Z';        // false
+						* Strings are compared character by character.
+								'Mary' < 'Mark'   // false
+								'Zoe' < 'Cathy'   // true 
+					---
 					### Logical Operators
 					| Operator | Description |
 					| --- | --- |
@@ -77,6 +87,16 @@
 							y > 0 && y <= x             // false
 							y < z && x >= z             // false
 							bool a = z > 0 && z < 100   // true
+					---
+					### Logical Operator Notes
+					* `!` has the highest precedence, followed by `&&`, and finally `||`.
+					* Associativity flows from left-to-right, however if the value of an expression can be determined by examining the sub-expression on the left side of the operator then the right sub-expression will not evaluate.
+							// Assume x and y are 5						
+							false && x++;  // x == 5
+							true || y++;   // y == 5
+							
+							true && x++;   // x == 6
+							false || y++;  // y == 6
 					---
 					### Control Structures
 					* When we want to make decisions we use *control structures*. Sometimes these are referred to as statements they aren't *actual* statements.
@@ -155,8 +175,60 @@
 								executed_when_1_true
 							} else
 								executed_when_1_false
-
-
+					---
+					### Selecting from Multiple Options
+					* Sometimes we have a menu or decision where we want to differentiate between multiple options. We can do this by using an *if-else chain*.
+					* **EXAMPLE:**
+							// Assume door is an integer containing 1, 2, or 3:
+							std::cout << "Behind door #" << door << ", you see a ";
+							if(door == 1) {         // door #1
+								std::cout << "new car!\n";
+							}
+							else if(door == 2) {    // door #2
+								std::cout << "trip to Maui!\n";
+							}
+							else {                  // door #3
+								std::cout << "goat!\n";
+							}
+					---
+					### Checking Ranges
+					* We can check if something falls within a range:
+							if(grade >= 90 && grade <= 100)
+								cout << "You earned an A!";
+					* We can also check if it falls outside a range:
+							if(grade <= 0 || grade >= 100)
+								cout << "That is an invalid grade.";
+					* Make sure you use *logical operators* we **CANNOT** write:
+							if(0 <= grade <= 100) // DOESN'T WORK
+					---
+					### Error/Default Options
+					* Sometimes we have the possibility of unexpected data. We can use a trailing `else` to take care of it:
+							// Assume door is an integer containing a user-entered value:
+							std::string result;
+							if(door == 1)          // door #1
+								result = "new car!\n";
+							else if(door == 2)     // door #2
+								result = "trip to Maui!\n";
+							else if(door == 3)     // door #3
+								result = "goat!\n";
+							else {                  // non-existent door
+								std::cout << door << " was not an option! GAME OVER!\n";
+								exit(1);
+							}
+							cout << "Behind door #" << door << ", you see a " << result;
+					---
+					### Non-`bool` conditionals
+					* C++ control structures do not strictly require *boolean expressions* in their conditionals.
+						* Any non-zero value will evaluate as `true`, and zero will be `false`
+						* **Be careful** with the *assignment operator*
+								// This will print "8 is 4!" ... Why?
+								int x = 8;
+								// [...]
+								std::cout << x;
+								if( x = 4 ) {
+									std::cout << " is 4!";
+								}
+					---
 				</section>
 			</div>
 		</div>

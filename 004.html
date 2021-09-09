@@ -74,6 +74,21 @@
 						* `14 % 3` will return `2`
 						* `14 % 3.0` will `error`
 					---
+					### Increment/Decrement Operators 
+					* With these operators the variable will be incremented/decremented by 1.
+					| Operator | Operation | Example |
+					| --- | --- | --- |
+					| `++` | Pre/Post-fix increment | ++ans, ans++ |
+					| `--` | Pre/Post-fix decrement | --ans, ans-- |
+					---
+					### Pre-fix vs Post-fix
+						int x = 5;
+						int y = 10;
+
+						y = x++; // x is 6, y is 5
+						x = --y; // x is 4, y is 4
+					* Pre-fix will increment/decrement before returning a value, post-fix returns the value and then increments/decrements.
+					---
 					### Combined Assignment
 					* *Combined assignment operators* provide a shorthand for arithmetic and assignment operations.
 							a = a + 12;
