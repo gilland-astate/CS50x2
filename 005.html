@@ -175,7 +175,48 @@
 					* When `std::setprecision(x)` is used along with the `std::fixed` manipulator instead of simply displaying `x` significant digits it will output `x` decimal digits in addition to the entirety of the whole number.
 					* `std::showpoint` can be used to force following stream operations to always print the decimal point for floating-point values including those that are represent whole numbers.
 					---
-					### A
+					### `getline()` Function
+					* So far dealing with the stream extraction operator we have only been able to get information in that had individual pieces. We weren't able to read entire strings of information in that had whitspace characters.
+					* In the cases in which you need to read information in a string that includes whitespace we can use the `getline()` function.
+					* By default the `getline()` function is newline delimited. 
+					---
+					### `getline()` Usage
+					* The syntax for `getline()` is:
+							getline( source_stream, destination_string );
+					* `source_stream` is a standard input stream for example `std::cin` or a file stream.
+					* `destination_string` is a `std::string` where you would like to put the information read in.
+						* Information in `destination_string` will be overwritten and discarded.
+					---
+					### `getline()` 3 Argument Usage
+					* `getline()` also has a 3 argument option if you want to change the delimiter you want to read to:
+							getline( source_stream, destination_string, 'delim' );
+					* The previous arguments are the same as with the 2 argument.
+					* The `delim` argument is a single character you wish to function as your delimiter.
+						* When using `getline()` the delimiter will be read in and discarded.
+					---
+					### Mixing `getline()` and `>>`
+					* When using stream extraction (>>) the operation leaves the delimiting whitespace in the input stream.
+						* This causes a problem if we read with `>>` and then follow-up with `getline()` as it may appear the function didn't read anything in, however a `\n` may have remained after the stream extraction.
+					* We may remedy this by using the `ignore()` function.
+					---
+					### `ignore()` Usage
+						std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+					* The above function will ensure that we ignore/throw away all characters up to and including the next newline character.
+					* `ignore()` also has a single arugment form where we can specify the number of characters to ignore and the 2 argument as demonstrated above that accepts a delimiter.
+							input_stream.ignore( num_chars );
+							input_stream.ignore( num_chars, delim );
+					---
+					### `get()` Function
+					* We have another tool in our belt when parsing input and that is the `get()` function. There are three versions and their syntax is as follows:
+							input_stream.get( dest_char );
+							input_stream.get( dest_cstring, num_to_read );
+							input_stream.get( dest_cstring, num_to_read, delim );
+					* `input_stream` is the stream from which you would like to extract from. `dest_char` is a single `char` variable to read into. `dest_cstring` is a C-string to read into. `num_to_read` is the number of `char` to read in. And, `delim` is the delimiter.
+					---
+					### `get()` Usage
+					* When using the 3-argument version get will not read and discard the `delim` so we must do that ourselves with `ignore()`.
+					* `get()` is not delimited normally so it will read in whitespace, newline characters, etc.
+						* When using the 2-argument option it will not stop at the end of the C-string and will read and move as much as it can up to `n-1` characters.
 				</section>
 			</div>
 		</div>

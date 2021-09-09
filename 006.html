@@ -143,8 +143,19 @@
 						* Will save time debugging if more code is added later.
 					---
 					### Nested Control Structures
-					* As part of the *body* of any *control structure* we can place another *control structure*. This is known as *nesting*, or *nested control structures*.
-					
+					* We can add any legal C++ statement into our `if` structures that we like.
+						* As part of the *body* of any *control structure* we can place another *control structure*. This is known as *nesting*, or *nested control structures*.
+					* **EXAMPLE:**
+							if(condition_1) {
+								if(condition_2) {
+									executed_1&2_true
+								} else {
+									executed_1_true_2_false
+								}
+								executed_when_1_true
+							} else
+								executed_when_1_false
+
 
 				</section>
 			</div>
