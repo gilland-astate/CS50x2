@@ -1,0 +1,127 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Section Seven</title>
+
+		<link rel="stylesheet" href="./dist/reset.css">
+		<link rel="stylesheet" href="./dist/reveal.css">
+		<link rel="stylesheet" href="./dist/theme/black.css">
+
+		<!-- Theme used for syntax highlighted code -->
+		<link rel="stylesheet" href="./plugin/highlight/monokai.css">
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section data-markdown>
+					# Section Seven
+					Repetition
+					---
+					### Repetition
+					* So far we have been able to make decisions with our control structures, however what if we wanted to repeat an action until a condition.
+					* The ability to perform repetative tasks at great speeds is one of the hallmarks of computing, and one of the major improvements we can achveive with computers.
+					---
+					### Loops
+					* Repeating code is accomplished with the help of control structures called *loops*.
+					* C++ provides three *loop* structures (four if you consider the *for each*):
+						* `while`
+						* `do-while`
+						* `for`
+					* Each loop has it's own syntax and best-use cases.
+					---
+					### Terminology
+					* **Loop Control Variable** - a variable whose value is tested in order to determine if the *loop* body should execute.
+					* **Loop Condition** - a *boolean expression*  whose result determins if the *loop* body should execute, or continue doing so. If it evalutes `true` then the *body* executes.
+					---
+					### `while` Control Structure
+					* The `while` loop is the most basic loop available in C++. It can accomplish the same as all other loops, but may not be the right solution depending on the problem.
+					* **SYNTAX**:
+							while(conditional) {
+								statement_to_repeat;      // body
+							} 
+					* These are very similar to a basic `if` structure assuming you would like to repeat the statements in the body.
+					---
+					### Three Steps of Loop Creation
+					* **Step 1** - Setup the *Loop Control Variable* (LCV) to the proper state in preperation of the loop.
+					* **Step 2** - Create the proper *Loop Condition* for your loop which should test the LCV.
+					* **Step 3** - The value of the LCV must be changed within the body of the loop.
+						* Failure to execute this step will in turn create an *infinite* loop.
+					---
+					### Three Steps Example
+						int counter = 1;                    // set up LCV
+						while ( counter <= 10 ) {           // loop condition
+							std::cout << counter << "\t";   // loop body
+							counter = counter + 1;          // update LCV
+						}
+
+
+						Output:
+
+						1	2	3	4	5	6	7	8	9	10
+					
+					---
+					### Means of Control Classification
+					* **Iterative Loop** - Also known is a count-control loop, these are loops that are controlled by a *counter* variable that counts up one by one.
+					* **Event-Controlled Loop** - These loops repeat until a certain condition is met. There are 3 sub-types:
+						* **Sentinel-Controlled** - A loop that repeats until a specified data value, *sentinel*, is encounted.
+						* **Flag-Controlled** - A loop that repeats until the boolean flag flips to `false`
+						* **End-of-File** - a loop that repeats (based on a stream) until the End of File, EOF, marker is read.
+					---
+					### Means of Timing Classification
+					* **Pre-Test Loop** - A loop structure that tests it's condition *before* the loop body is executed.
+						* `while`
+						* `for`
+					* **Post-Test Loop** - A loop structure that test it's condition *after* the loop body is exectured.
+						* `do-while`
+					---
+					### Means of Control Examples
+					* Iterative Loop:
+							int counter = 10;                   // set up LCV
+							while ( counter > 0 ) {             // loop condition
+								std::cout << counter << "\t";   // loop body
+								counter = counter - 1;          // update LCV
+							}
+					* Event-Controlled Loop:
+							int value = 0;                      // set up LCV
+							while( value <= 0 ){                // until LCV is positive
+								std::cout << "Enter a positive integer: ";
+								std::cin  >> value;             // update the LCV
+							}
+					* You can easily determine the classification with event-controlled because you cannot look at the loop alone and tell when it ends!
+					---
+					### `for` Control Structure
+					* The `for` loops main use is as an *iterative loop*.
+					* **SYNTAX**:
+							for(initializer; conditional; update) {
+								statement_to_repeat;
+							}
+					* The *initializer* executes the first time the loop is ran and only the first time. 
+					* The `for` loop is a *pre-test* loop therefore it checks the *conditional* each time before running the body.
+					* Upon executing the body, the *update* is executed before falling back to check the *conditional*.
+					---
+					# END
+
+				</section>
+			</div>
+		</div>
+
+		<script src="./dist/reveal.js"></script>
+		<script src="./plugin/notes/notes.js"></script>
+		<script src="./plugin/markdown/markdown.js"></script>
+		<script src="./plugin/highlight/highlight.js"></script>
+		<script>
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/
+			Reveal.initialize({
+				hash: true,
+
+				// Learn about plugins: https://revealjs.com/plugins/
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
+			});
+		</script>
+	</body>
+</html>
