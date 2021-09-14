@@ -102,8 +102,100 @@
 					* The `for` loop is a *pre-test* loop therefore it checks the *conditional* each time before running the body.
 					* Upon executing the body, the *update* is executed before falling back to check the *conditional*.
 					---
-					# END
+					### `for` Examples
+					Example 1 (Iterative)
 
+						for( int counter = 1; counter <= 10; counter += 1 ) {
+							std::cout << counter << "\t";
+						}
+					
+					Example 2 (Iterative)
+
+						int counter;
+						for( counter = 10; counter > 0; counter -= 1 ) {
+							std::cout << counter << "\t";
+						}
+
+					Example 3 (Event-Controlled)
+
+						int value;
+						for( value = 0; value <= 0; std::cin >> value ){
+							std::cout << "Enter a positive integer: ";
+						}
+					---
+					### Range-based `for`
+					* C++ 11 added the ability to iterate over all elements of a sequence container using a more consise syntax:
+					* **SYNTAX**:
+							for(item_declaration : container)
+								statement_to_repeat;
+
+							for(item_declaration : container) {
+								statement_1;
+								[...]
+								statement_n;
+							}
+					---
+					### Range-based `for` Example
+					* It's important to introduce this here, yet be aware we haven't and won't speak about the containers that are needed for the *foreach* loop. With that said `vector` below is an iterable container that contains values.
+							// Create some values in a collection:
+							std::vector<int> values{ 2, 4, 6, 8, 10 };
+							// Print them to standard output using the 
+							// range-based `for`:
+							for( int item : values ) {
+								std::cout << item << "\n";
+							}
+					---
+					### `do-while` Control Structure
+					* The `do-while` loop is the only example of a post-test loop available in C++. Also notice it is the only loop that concludes in a semi-colon.
+					* **SYNTAX**: 
+							do {
+								statement_1;
+								[...]
+								statement_n;
+							} while(loop_conditional);
+					---
+					### `do-while` Examples
+					Example 1 (Iterative)
+						
+						int counter = 1;                    // set up LCV
+						do {                                // loop entry
+							std::cout << counter << "\t";   // loop body
+							counter = counter + 1;          // update LCV
+						} while( counter <= 10 );
+					Example 2 (Event-Controlled)
+						
+						int value;                          // declare LCV
+						do {                                // loop entry
+							std::cout << "Enter a positive integer: ";
+							std::cin  >> value;             // read/update LCV
+						} while( value <= 0 );
+					*Don't forget the semi-colon!*
+					---
+					### Structure Choice
+					* `while`
+						* pre-test loop
+						* Well suited for *Event-Controlled Loops*
+					* `for`
+						* pre-test loop
+						* Well suited for *Iterative Loops*
+						* Range-based `for` is great for containers
+					* `do-while`
+						* post-test loop
+						* Well suited for *Event-Controlled Loops* used for *validation*
+					---
+					### Nested Loops
+					* Similar to the way we can nest `if` control structures we can also nest loops.
+					* One of the best use-cases for nested loops are for displaying/parsing tables (rows/columns)
+							int counter = 0;
+							for(int row = 0; row < 3; row++) {
+								for(int col = 0; col < 3; col++) {
+									cout << counter << "\t";
+								}
+								cout << endl;
+							}
+							Output:		0	1	2
+							               3	4	5
+									       6	7	9
 				</section>
 			</div>
 		</div>
