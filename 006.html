@@ -262,6 +262,31 @@
 								const int EPSILON = 1e-10;
 								if( fabs(num1 - num2) <= EPSILON )
 									std::count << "Both num1 and num2 are equivalent!";
+					---
+					### Full Epsilon Comparison Example
+					This will fail as it is using the equality operator.
+						double pi1 = acos(-1);
+						double pi2 = (pi1 * (0.1 * 0.1)) / (0.1 * 0.1);
+						if(pi1 == pi2){
+							std::cout << "OK, " << pi1 << " == " << pi2 << "!\n";
+						}
+						else{
+							std::cout << "An ERROR occurred: " << pi1 << " != " 
+									<< pi2 << "!\n";
+						}
+					---
+					### Full Epsilon Comparison Example
+					This is the proper way of comparing two floating point numbers!
+						const double EPSILON = 1e-10
+						double pi1 = acos(-1);
+						double pi2 = (pi1 * (0.1 * 0.1)) / (0.1 * 0.1);
+						if( fabs(pi1 - pi2) <= EPSILON ){
+							std::cout << "OK, " << pi1 << " == " << pi2 << "!\n";
+						}
+						else{
+							std::cout << "An ERROR occurred: " << pi1 << " != " 
+									<< pi2 << "!\n";
+						}
 				</section>
 			</div>
 		</div>
