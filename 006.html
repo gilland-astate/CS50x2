@@ -240,12 +240,28 @@
 					* Computers identify numbers in binary (base-2).
 						* Integers are easily and quickly converted into binary, however conversions for Real Numbers is not as simple.
 					* We also have nubmers that even with base-10 cannot be represented and are thus *irrational*.
-						* Example: π, *e*
+						* Example: `π, e`
 					* We also have numbers that can be represented in base-10 however cannot be represented properly.
-						* Example: 0.1, 0.3
+						* Example: `0.1`, `0.3`
 					* We are forced to *round* such numbers.
 					---
-					
+					### Representing Real Numbers
+					* When we convert base-10 decimal numbers into their base-2 representation we do so by a *deterministic* approach. Meaning that everytime we use `0.1` for example it will return the exact same value.
+					* However, the values are being rounded thus the internal representation contains some *rounding errors*.
+					* When using these numbers in mathematical calculations the errors compound and can eventually return differing results.
+					---
+					### Epsilon
+					* Thus, testing a calculated floating point value for **equality** against another isn't guaranteed to produce correct results.
+					* This leads us into how much rounding error is acceptable and how do we determine how much exists?
+					* **Epsilon** - an arbitrarily small positive quantity in mathematical analysis.
+						* Pick your epsilon value based upon the precision of your needed output. Typically 10-decimal places is sufficient.
+					---
+					### Using an Epsilon Comparison
+					* If we are able to subtract our two values away from each other we should be left with just the remaining *rounding error*
+					* We can then compare the absolute value of that error to our epsilon and if it is less than said epsilon we can then say that they are equivalent.
+								const int EPSILON = 1e-10;
+								if( fabs(num1 - num2) <= EPSILON )
+									std::count << "Both num1 and num2 are equivalent!";
 				</section>
 			</div>
 		</div>
